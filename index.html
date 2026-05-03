@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kyrylo Lushchan — N8N Automation Expert</title>
+<meta name="description" content="N8N Automation Expert. No-code Workflow Architect & AI Integration. Portfolio of n8n workflows, AI agents and automation pipelines." />
+<style>
+:root{--bg:#0b0e14;--grid:#1a1f2b;--line:#2a3142;--node:#161b25;--node-border:#252b3a;--node-hover:#1c2230;--text:#e6e8ee;--muted:#8a93a6;--accent:#ff6d5a;--green:#22c55e}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+body{background-image:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:22px 22px;background-attachment:fixed}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+header.top{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(11,14,20,.7);border-bottom:1px solid var(--line)}
+header.top .row{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto}
+header.top .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+header.top .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.lang{display:flex;gap:4px;background:var(--node);border:1px solid var(--node-border);border-radius:10px;padding:4px}
+.lang button{background:transparent;color:var(--muted);border:0;padding:6px 10px;border-radius:7px;cursor:pointer;font-weight:600;font-size:12px;letter-spacing:.5px}
+.lang button.active{background:var(--accent);color:#fff}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding:60px 24px 40px;max-width:1180px;margin:0 auto;align-items:center}
+.hero h1{font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0 0 14px}
+.hero h1 .accent{color:var(--accent)}
+.hero .sub{color:var(--muted);font-size:18px;margin:0 0 24px;max-width:560px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--node);border:1px solid var(--node-border);padding:6px 12px;border-radius:999px;font-size:13px;color:var(--muted)}
+.chip .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.video-wrap{aspect-ratio:9/16;max-width:340px;margin-left:auto;background:#000;border:1px solid var(--node-border);border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(255,109,90,.15),0 0 0 1px var(--node-border)}
+.video-wrap iframe{width:100%;height:100%;border:0;display:block}
+section{padding:60px 24px;max-width:1180px;margin:0 auto;position:relative}
+.section-title{display:flex;align-items:center;gap:12px;margin:0 0 28px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-weight:600}
+.section-title::before{content:"";display:inline-block;width:24px;height:2px;background:var(--accent)}
+h2{font-size:clamp(22px,2.6vw,32px);margin:0 0 24px}
+.node{position:relative;background:var(--node);border:1px solid var(--node-border);border-radius:14px;padding:22px;transition:all .2s ease}
+.node:hover{background:var(--node-hover);border-color:#3a4358;transform:translateY(-2px)}
+.node .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.node .icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#1c2330,#262e40);border:1px solid var(--node-border);font-size:18px;flex-shrink:0}
+.node .title{font-weight:700;font-size:18px}
+.node .subtitle{color:var(--muted);font-size:13px;margin-top:2px}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:#0f1320;border:1px solid var(--node-border);color:#cdd3df;padding:5px 10px;border-radius:8px;font-size:12.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.portfolio{display:grid;grid-template-columns:1fr;gap:22px}
+.case .head .badge{margin-left:auto;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 8px;border-radius:6px}
+.case p.desc{color:#c8cdd9;margin:8px 0 14px;line-height:1.55}
+.case .flow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.flow .step{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#0f1320;border:1px solid var(--node-border);padding:6px 10px;border-radius:8px;color:#cdd3df}
+.flow .arrow{color:var(--muted);align-self:center}
+.screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:8px}
+.screens img{width:100%;display:block;border:1px solid var(--node-border);border-radius:10px;background:#fff;cursor:zoom-in;transition:transform .2s}
+.screens img:hover{transform:scale(1.01);border-color:#3a4358}
+.no-screen{font-size:12px;color:var(--muted);font-style:italic;border-top:1px dashed var(--node-border);padding-top:10px;margin-top:8px}
+ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ul.clean li{padding-left:18px;position:relative;color:#cdd3df}
+ul.clean li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:12px;font-weight:600;border:1px solid var(--node-border);background:var(--node);color:var(--text);transition:.2s}
+.btn:hover{border-color:var(--accent);color:#fff;text-decoration:none;transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:#ff8472}
+footer{padding:30px 24px 50px;color:var(--muted);text-align:center;font-size:13px;border-top:1px solid var(--line);margin-top:40px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:99;padding:20px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95%;max-height:95%;border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,.7)}
+.bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:30px}.video-wrap{margin:0 auto}.bg-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="row">
+    <div class="brand"><span class="dot"></span><span>Kyrylo Lushchan</span></div>
+    <div class="lang" id="lang">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="ru">RU</button>
+      <button data-lang="uk">UA</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="meta">
+      <span class="chip"><span class="pulse"></span><span data-i18n="chip-available">Available for projects</span></span>
+      <span class="chip" data-i18n="chip-location">📍 Kyiv, Ukraine</span>
+      <span class="chip">🌐 EN · RU · UA</span>
+    </div>
+    <h1 data-i18n="hero-h1">N8N Automation Expert<br><span class="accent">No-code Workflow Architect & AI Integration</span></h1>
+    <p class="sub" data-i18n="hero-sub">I turn manual operations into stable automated systems. I design, deploy and maintain complex multi-step workflows in n8n with AI, CRM, API and infrastructure integration.</p>
+    <div class="cta">
+      <a class="btn primary" href="#portfolio" data-i18n="btn-portfolio">See portfolio</a>
+      <a class="btn" href="#contact" data-i18n="btn-contact">Contact me</a>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <iframe id="hero-video" src="https://www.youtube.com/embed/QanPrn9OE_Q?cc_load_policy=0&cc_lang_pref=none&hl=en&modestbranding=1&rel=0&playsinline=1" title="Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-title" data-i18n="section-about">About</div>
+  <div class="node" style="max-width:880px">
+    <div class="head"><div class="icon">🧩</div><div><div class="title" data-i18n="about-title">About me</div><div class="subtitle" data-i18n="about-subtitle">Approach, focus and what I bring to a project</div></div></div>
+    <p class="desc" data-i18n="about-desc">I specialize in n8n — a tool that gives full control over automation: logic, APIs, data and AI in one pipeline. I work with real business tasks: freeing teams from manual operations, connecting services and building systems that run predictably and reliably. Every project starts with understanding the process, not just the technology.</p>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="section-title" data-i18n="section-stack">Tech stack</div>
+  <h2 data-i18n="stack-h2">Tools I work with</h2>
+  <div class="stack-grid">
+    <div class="node"><div class="head"><div class="icon">🔁</div><div class="title" data-i18n="stack-auto">Automation core</div></div><div class="tags"><span class="tag">n8n</span><span class="tag">No-Code</span></div></div>
+    <div class="node"><div class="head"><div class="icon">🤖</div><div class="title" data-i18n="stack-ai">AI & Voice</div></div><div class="tags"><span class="tag">OpenAI GPT-4o</span><span class="tag">Kimi K2.6</span><span class="tag">OpenRouter</span><span class="tag">OpenClaw</span><span class="tag">HeyGen</span><span class="tag">ElevenLabs</span><span class="tag">Whisper</span></div></div>
+    <div class="node"><div class="head"><div class="icon">🗄</div><div class="title" data-i18n="stack-crm">CRM & Databases</div></div><div class="tags"><span class="tag">Airtable</span><span class="tag">Notion</span><span class="tag">Google Workspace</span><span class="tag">HubSpot</span><span class="tag">Supabase</span></div></div>
+    <div class="node"><div class="head"><div class="icon">📡</div><div class="title" data-i18n="stack-api">API & Integrations</div></div><div class="tags"><span class="tag">Twilio</span><span class="tag">Slack</span><span class="tag">Telegram Bot API</span><span class="tag">Tavily API</span><span class="tag">Webhooks</span><span class="tag">REST API</span></div></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-title" data-i18n="section-portfolio">Portfolio</div>
+  <h2 data-i18n="portfolio-h2">Selected automation cases</h2>
+  <div class="portfolio">
+
+    <div class="node case">
+      <div class="head"><div class="icon">🔬</div><div><div class="title">AI Research Agent «Scout»</div><div class="subtitle" data-i18n="scout-subtitle">Autonomous research agent on OpenClaw + Kimi K2.6</div></div><span class="badge">Featured</span></div>
+      <p class="desc" data-i18n="scout-desc">Built on <b>OpenClaw</b> — an autonomous AI research agent that runs 24/7 on a VPS. Accepts text and voice messages in Telegram, plans the research itself, searches the web, analyses sources and produces structured reports on any topic.</p>
+      <div class="flow">
+        <span class="step">Telegram (text/voice)</span><span class="arrow">→</span>
+        <span class="step">OpenClaw + Kimi K2.6</span><span class="arrow">→</span>
+        <span class="step">Tavily (web)</span><span class="arrow">→</span>
+        <span class="step">Whisper (STT)</span><span class="arrow">→</span>
+        <span class="step">Docker / Hetzner</span><span class="arrow">→</span>
+        <span class="step" data-i18n="scout-step6">Structured report</span>
+      </div>
+      <div class="no-screen" data-i18n="scout-noscreen">No workflow screenshot — the agent is built outside n8n, at code level on the OpenClaw framework.</div>
+    </div>
+
+    <div class="node case">
+      <div class="head"><div class="icon">🎰</div><div><div class="title">Gaming Platforms Scout</div><div class="subtitle" data-i18n="gaming-subtitle">Automated Casino Discovery System</div></div></div>
+      <p class="desc" data-i18n="gaming-desc">Multi-level workflow with parallel processing of dozens of sources. Screenshots show the scale: parallel branches, HTTP requests, Code nodes, aggregation and deduplication.</p>
+      <div class="flow">
+        <span class="step">Schedule</span><span class="arrow">→</span>
+        <span class="step">n8n + HTTP + Code</span><span class="arrow">→</span>
+        <span class="step" data-i18n="gaming-step3">Parsing + dedup</span><span class="arrow">→</span>
+        <span class="step" data-i18n="gaming-step4">Auto-updated catalogue</span>
+      </div>
+      <div class="screens">
+        <img src="screens/gaming-1.jpg" alt="Gaming Scout 1" loading="lazy">
+        <img src="screens/gaming-2.jpg" alt="Gaming Scout 2" loading="lazy">
+        <img src="screens/gaming-3.jpg" alt="Gaming Scout 3" loading="lazy">
+      </div>
+    </div>
+
+    <div class="node case">
+      <div class="head"><div class="icon">🎬</div><div><div class="title">AI Pipeline: TikTok → Translated Avatar</div><div class="subtitle">n8n + HeyGen + ElevenLabs</div></div></div>
+      <p class="desc" data-i18n="tiktok-desc">Pipeline that takes a TikTok video via Telegram, transcribes the speech, translates it and re-creates the video with a synchronised AI avatar in another language.</p>
+      <div class="flow">
+        <span class="step">Telegram</span><span class="arrow">→</span>
+        <span class="step">TikWM + Whisper</span><span class="arrow">→</span>
+        <span class="step" data-i18n="tiktok-step3">GPT translate</span><span class="arrow">→</span>
+        <span class="step">HeyGen + ElevenLabs</span><span class="arrow">→</span>
+        <span class="step" data-i18n="tiktok-step5">Localised video</span>
+      </div>
+      <div class="screens"><img src="screens/tiktok.jpg" alt="TikTok avatar" loading="lazy"></div>
+    </div>
+
+    <div class="node case">
+      <div class="head"><div class="icon">🧲</div><div><div class="title">AI Lead Pipeline</div><div class="subtitle">n8n + GPT-4o + Airtable + Slack</div></div></div>
+      <p class="desc" data-i18n="leads-desc">Multi-source lead qualification funnel: deduplication, AI confidence scoring, department routing, automatic escalation on low confidence.</p>
+      <div class="flow">
+        <span class="step">Webhook / Telegram</span><span class="arrow">→</span>
+        <span class="step">GPT-4o scoring</span><span class="arrow">→</span>
+        <span class="step">Airtable</span><span class="arrow">→</span>
+        <span class="step">Slack / Teams</span><span class="arrow">→</span>
+        <span class="step" data-i18n="leads-step5">Routed lead</span>
+      </div>
+      <div class="screens"><img src="screens/leads.jpg" alt="Lead pipeline" loading="lazy"></div>
+    </div>
+
+    <div class="node case">
+      <div class="head"><div class="icon">🏛</div><div><div class="title">US Legislative Intelligence Bot</div><div class="subtitle" data-i18n="legis-subtitle">AI Bill Monitoring (n8n)</div></div></div>
+      <p class="desc" data-i18n="legis-desc">Automated monitoring of US legislative bills: schedule → LegiScan API → filter → PDF extract → GPT analysis → Google Sheets log with deduplication.</p>
+      <div class="flow">
+        <span class="step">Schedule</span><span class="arrow">→</span>
+        <span class="step">LegiScan API</span><span class="arrow">→</span>
+        <span class="step">PDF + GPT</span><span class="arrow">→</span>
+        <span class="step" data-i18n="legis-step4">Google Sheets digest</span>
+      </div>
+      <div class="screens"><img src="screens/legislative.jpg" alt="Legislative bot" loading="lazy"></div>
+    </div>
+
+    <div class="node case">
+      <div class="head"><div class="icon">🤖</div><div><div class="title" data-i18n="corp-title">Intelligent AI Agent for Corporate Data</div><div class="subtitle">n8n + Supabase Vector Store</div></div></div>
+      <p class="desc" data-i18n="corp-desc">Corporate AI agent with a vector knowledge base. Chat input → semantic search in Supabase Vector Store → contextual LLM answer. A separate workflow syncs Notion data into vectors.</p>
+      <div class="flow">
+        <span class="step" data-i18n="corp-step1">Chat message</span><span class="arrow">→</span>
+        <span class="step">Gemini + Postgres</span><span class="arrow">→</span>
+        <span class="step">Supabase vectors</span><span class="arrow">→</span>
+        <span class="step" data-i18n="corp-step4">Context-aware answer</span>
+      </div>
+      <div class="screens"><img src="screens/supabase.jpg" alt="Supabase agent" loading="lazy"></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="section-title" data-i18n="section-expertise">Expertise</div>
+  <h2 data-i18n="expertise-h2">Key skills</h2>
+  <div class="node">
+    <ul class="clean">
+      <li data-i18n="skill-1"><b>n8n</b> — design, deployment and maintenance of complex multi-step workflows</li>
+      <li data-i18n="skill-2"><b>AI Agents</b> — autonomous agents on OpenClaw, LLM chains, reasoning via OpenRouter</li>
+      <li data-i18n="skill-3"><b>Voice AI</b> — voice pipelines with Whisper (STT), ElevenLabs, HeyGen avatar</li>
+      <li data-i18n="skill-4"><b>CRM & Data</b> — Airtable, Notion, Google Workspace, Supabase integration and sync</li>
+      <li data-i18n="skill-5"><b>API & Webhooks</b> — reliable data transfer, HTTP chains, REST API, deduplication</li>
+      <li data-i18n="skill-6"><b>Telegram Bots</b> — bots as automation interfaces: triggers, notifications, agents</li>
+      <li data-i18n="skill-7"><b>Infrastructure</b> — VPS (Hetzner), Docker, Ubuntu — automations running 24/7</li>
+    </ul>
+  </div>
+</section>
+
+<section id="background">
+  <div class="section-title" data-i18n="section-bg">Background</div>
+  <div class="bg-grid">
+    <div class="node">
+      <div class="head"><div class="icon">🎓</div><div class="title" data-i18n="edu-title">Education</div></div>
+      <ul class="clean">
+        <li data-i18n="edu-1"><b>Marketing Automation School (MASC)</b> — Marketing Automation, 2025</li>
+        <li data-i18n="edu-2"><b>IT School GoIT</b> — FullStack Developer, 2021–2022</li>
+      </ul>
+    </div>
+    <div class="node">
+      <div class="head"><div class="icon">💼</div><div class="title" data-i18n="exp-title">Experience</div></div>
+      <p class="desc" style="margin-top:0" data-i18n="exp-company"><b>Media Buyer Facebook Ads — Infinity Traffic</b> <span style="color:var(--muted)">(Jun 2023 — Nov 2024)</span></p>
+      <ul class="clean">
+        <li data-i18n="exp-1">Traffic launch in first-bill offers vertical, daily budget $200–300</li>
+        <li data-i18n="exp-2">Building and scaling profitable funnels through analytics and systematic testing</li>
+        <li data-i18n="exp-3">Net profit $15,070 over the last 6 months</li>
+      </ul>
+      <p class="desc" style="margin-top:14px;font-style:italic;color:var(--muted)" data-i18n="exp-note">This background gives strong expertise in analytics, hypothesis testing and a data-driven approach — directly applied when designing robust automations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <div class="section-title" data-i18n="section-languages">Languages</div>
+  <div class="node" style="max-width:520px">
+    <ul class="clean">
+      <li data-i18n="lang-item-1">🇺🇦 <b>Ukrainian</b> — Native</li>
+      <li data-i18n="lang-item-2">🇷🇺 <b>Russian</b> — Native</li>
+      <li data-i18n="lang-item-3">🇬🇧 <b>English</b> — B1</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title" data-i18n="section-contact">Contact</div>
+  <div class="node" style="text-align:center">
+    <h2 style="margin-top:0" data-i18n="contact-h2">Let's automate it</h2>
+    <p class="desc" data-i18n="contact-desc">Tell me about your process — I'll suggest the shortest path to a working automation.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn primary" href="https://t.me/Kiruxxxa7" target="_blank" rel="noopener">✈️ Telegram @Kiruxxxa7</a>
+      <a class="btn" href="mailto:lushankirill@gmail.com">✉️ lushankirill@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Kyrylo Lushchan · Built with n8n-style 🧩</footer>
+<div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
+
+<script>
+const VIDEOS={
+  en:"https://www.youtube.com/embed/QanPrn9OE_Q?cc_load_policy=0&cc_lang_pref=none&hl=en&modestbranding=1&rel=0&playsinline=1",
+  ru:"https://www.youtube.com/embed/mZ2dV38D9uQ?cc_load_policy=0&cc_lang_pref=none&hl=en&modestbranding=1&rel=0&playsinline=1",
+  uk:"https://www.youtube.com/embed/D4i7NqThlSQ?cc_load_policy=0&cc_lang_pref=none&hl=en&modestbranding=1&rel=0&playsinline=1"
+};
+
+const I18N={
+  en:{
+    "chip-available":"Available for projects",
+    "chip-location":"📍 Kyiv, Ukraine",
+    "hero-h1":'N8N Automation Expert<br><span class="accent">No-code Workflow Architect & AI Integration</span>',
+    "hero-sub":"I turn manual operations into stable automated systems. I design, deploy and maintain complex multi-step workflows in n8n with AI, CRM, API and infrastructure integration.",
+    "btn-portfolio":"See portfolio",
+    "btn-contact":"Contact me",
+    "section-about":"About",
+    "about-title":"About me",
+    "about-subtitle":"Approach, focus and what I bring to a project",
+    "about-desc":"I specialize in n8n — a tool that gives full control over automation: logic, APIs, data and AI in one pipeline. I work with real business tasks: freeing teams from manual operations, connecting services and building systems that run predictably and reliably. Every project starts with understanding the process, not just the technology.",
+    "section-stack":"Tech stack",
+    "stack-h2":"Tools I work with",
+    "stack-auto":"Automation core",
+    "stack-ai":"AI & Voice",
+    "stack-crm":"CRM & Databases",
+    "stack-api":"API & Integrations",
+    "stack-infra":"Infrastructure",
+    "section-portfolio":"Portfolio",
+    "portfolio-h2":"Selected automation cases",
+    "scout-subtitle":"Autonomous research agent on OpenClaw + Kimi K2.6",
+    "scout-desc":"Built on <b>OpenClaw</b> — an autonomous AI research agent that runs 24/7 on a VPS. Accepts text and voice messages in Telegram, plans the research itself, searches the web, analyses sources and produces structured reports on any topic.",
+    "scout-step6":"Structured report",
+    "scout-noscreen":"No workflow screenshot — the agent is built outside n8n, at code level on the OpenClaw framework.",
+    "gaming-subtitle":"Automated Casino Discovery System",
+    "gaming-desc":"Multi-level workflow with parallel processing of dozens of sources. Screenshots show the scale: parallel branches, HTTP requests, Code nodes, aggregation and deduplication.",
+    "gaming-step3":"Parsing + dedup",
+    "gaming-step4":"Auto-updated catalogue",
+    "tiktok-desc":"Pipeline that takes a TikTok video via Telegram, transcribes the speech, translates it and re-creates the video with a synchronised AI avatar in another language.",
+    "tiktok-step3":"GPT translate",
+    "tiktok-step5":"Localised video",
+    "leads-desc":"Multi-source lead qualification funnel: deduplication, AI confidence scoring, department routing, automatic escalation on low confidence.",
+    "leads-step5":"Routed lead",
+    "legis-subtitle":"AI Bill Monitoring (n8n)",
+    "legis-desc":"Automated monitoring of US legislative bills: schedule → LegiScan API → filter → PDF extract → GPT analysis → Google Sheets log with deduplication.",
+    "legis-step4":"Google Sheets digest",
+    "corp-title":"Intelligent AI Agent for Corporate Data",
+    "corp-desc":"Corporate AI agent with a vector knowledge base. Chat input → semantic search in Supabase Vector Store → contextual LLM answer. A separate workflow syncs Notion data into vectors.",
+    "corp-step1":"Chat message",
+    "corp-step4":"Context-aware answer",
+    "section-expertise":"Expertise",
+    "expertise-h2":"Key skills",
+    "skill-1":"<b>n8n</b> — design, deployment and maintenance of complex multi-step workflows",
+    "skill-2":"<b>AI Agents</b> — autonomous agents on OpenClaw, LLM chains, reasoning via OpenRouter",
+    "skill-3":"<b>Voice AI</b> — voice pipelines with Whisper (STT), ElevenLabs, HeyGen avatar",
+    "skill-4":"<b>CRM & Data</b> — Airtable, Notion, Google Workspace, Supabase integration and sync",
+    "skill-5":"<b>API & Webhooks</b> — reliable data transfer, HTTP chains, REST API, deduplication",
+    "skill-6":"<b>Telegram Bots</b> — bots as automation interfaces: triggers, notifications, agents",
+    "skill-7":"<b>Infrastructure</b> — VPS (Hetzner), Docker, Ubuntu — automations running 24/7",
+    "section-bg":"Background",
+    "edu-title":"Education",
+    "edu-1":"<b>Marketing Automation School (MASC)</b> — Marketing Automation, 2025",
+    "edu-2":"<b>IT School GoIT</b> — FullStack Developer, 2021–2022",
+    "exp-title":"Experience",
+    "exp-company":'<b>Media Buyer Facebook Ads — Infinity Traffic</b> <span style="color:var(--muted)">(Jun 2023 — Nov 2024)</span>',
+    "exp-1":"Traffic launch in first-bill offers vertical, daily budget $200–300",
+    "exp-2":"Building and scaling profitable funnels through analytics and systematic testing",
+    "exp-3":"Net profit $15,070 over the last 6 months",
+    "exp-note":"This background gives strong expertise in analytics, hypothesis testing and a data-driven approach — directly applied when designing robust automations.",
+    "section-languages":"Languages",
+    "lang-item-1":"🇺🇦 <b>Ukrainian</b> — Native",
+    "lang-item-2":"🇷🇺 <b>Russian</b> — Native",
+    "lang-item-3":"🇬🇧 <b>English</b> — B1",
+    "section-contact":"Contact",
+    "contact-h2":"Let's automate it",
+    "contact-desc":"Tell me about your process — I'll suggest the shortest path to a working automation."
+  },
+  ru:{
+    "chip-available":"Открыт к проектам",
+    "chip-location":"📍 Киев, Украина",
+    "hero-h1":'N8N Automation Expert<br><span class="accent">No-code архитектор workflows и AI-интеграции</span>',
+    "hero-sub":"Превращаю ручные операции в стабильные автоматизированные системы. Проектирую, разворачиваю и поддерживаю сложные многоуровневые workflows в n8n с интеграцией AI, CRM, API и инфраструктуры.",
+    "btn-portfolio":"Смотреть портфолио",
+    "btn-contact":"Написать мне",
+    "section-about":"О себе",
+    "about-title":"О себе",
+    "about-subtitle":"Подход, фокус и что я привношу в проект",
+    "about-desc":"Я специализируюсь на n8n — инструменте, который даёт полный контроль над автоматизацией: логика, API, данные и AI в одном пайплайне. Работаю с реальными бизнес-задачами: освобождаю команды от ручных операций, связываю сервисы и строю системы, которые работают предсказуемо и надёжно. Каждый проект начинается с понимания процесса, а не только технологии.",
+    "section-stack":"Стек технологий",
+    "stack-h2":"Инструменты, с которыми я работаю",
+    "stack-auto":"Ядро автоматизации",
+    "stack-ai":"AI и голос",
+    "stack-crm":"CRM и базы данных",
+    "stack-api":"API и интеграции",
+    "stack-infra":"Инфраструктура",
+    "section-portfolio":"Портфолио",
+    "portfolio-h2":"Избранные кейсы автоматизации",
+    "scout-subtitle":"Автономный исследовательский агент на OpenClaw + Kimi K2.6",
+    "scout-desc":"Построен на <b>OpenClaw</b> — автономный AI-агент для исследований, работающий 24/7 на VPS. Принимает текстовые и голосовые сообщения в Telegram, самостоятельно планирует исследование, ищет в интернете, анализирует источники и формирует структурированные отчёты по любой теме.",
+    "scout-step6":"Структурированный отчёт",
+    "scout-noscreen":"Скриншота workflow нет — агент построен вне n8n, на уровне кода с использованием фреймворка OpenClaw.",
+    "gaming-subtitle":"Автоматизированная система поиска казино",
+    "gaming-desc":"Многоуровневый workflow с параллельной обработкой десятков источников. Скриншоты показывают масштаб: параллельные ветки, HTTP-запросы, Code-узлы, агрегация и дедупликация.",
+    "gaming-step3":"Парсинг + дедупликация",
+    "gaming-step4":"Автообновляемый каталог",
+    "tiktok-desc":"Пайплайн, который берёт TikTok-видео через Telegram, транскрибирует речь, переводит и пересоздаёт видео с синхронизированным AI-аватаром на другом языке.",
+    "tiktok-step3":"Перевод через GPT",
+    "tiktok-step5":"Локализованное видео",
+    "leads-desc":"Многоканальная воронка квалификации лидов: дедупликация, AI-скоринг уверенности, маршрутизация по отделам, автоматическая эскалация при низкой уверенности.",
+    "leads-step5":"Маршрутизированный лид",
+    "legis-subtitle":"Мониторинг законопроектов AI (n8n)",
+    "legis-desc":"Автоматический мониторинг законопроектов США: расписание → LegiScan API → фильтр → извлечение PDF → анализ GPT → лог в Google Sheets с дедупликацией.",
+    "legis-step4":"Дайджест в Google Sheets",
+    "corp-title":"Интеллектуальный AI-агент для корпоративных данных",
+    "corp-desc":"Корпоративный AI-агент с векторной базой знаний. Входящий чат → семантический поиск в Supabase Vector Store → контекстный ответ LLM. Отдельный workflow синхронизирует данные Notion в векторы.",
+    "corp-step1":"Сообщение в чат",
+    "corp-step4":"Контекстный ответ",
+    "section-expertise":"Экспертиза",
+    "expertise-h2":"Ключевые навыки",
+    "skill-1":"<b>n8n</b> — проектирование, развёртывание и поддержка сложных многоуровневых workflows",
+    "skill-2":"<b>AI Agents</b> — автономные агенты на OpenClaw, LLM-цепочки, reasoning через OpenRouter",
+    "skill-3":"<b>Voice AI</b> — голосовые пайплайны с Whisper (STT), ElevenLabs, HeyGen аватар",
+    "skill-4":"<b>CRM & Data</b> — интеграция и синхронизация Airtable, Notion, Google Workspace, Supabase",
+    "skill-5":"<b>API & Webhooks</b> — надёжная передача данных, HTTP-цепочки, REST API, дедупликация",
+    "skill-6":"<b>Telegram Bots</b> — боты как интерфейсы автоматизации: триггеры, уведомления, агенты",
+    "skill-7":"<b>Infrastructure</b> — VPS (Hetzner), Docker, Ubuntu — автоматизации работают 24/7",
+    "section-bg":"Опыт и образование",
+    "edu-title":"Образование",
+    "edu-1":"<b>Marketing Automation School (MASC)</b> — Маркетинговая автоматизация, 2025",
+    "edu-2":"<b>IT School GoIT</b> — FullStack-разработчик, 2021–2022",
+    "exp-title":"Опыт работы",
+    "exp-company":'<b>Медиабайер Facebook Ads — Infinity Traffic</b> <span style="color:var(--muted)">(Jun 2023 — Nov 2024)</span>',
+    "exp-1":"Запуск трафика в вертикали first-bill офферов, дневной бюджет $200–300",
+    "exp-2":"Построение и масштабирование прибыльных воронок через аналитику и систематическое тестирование",
+    "exp-3":"Чистая прибыль $15 070 за последние 6 месяцев",
+    "exp-note":"Этот опыт даёт сильную экспертизу в аналитике, тестировании гипотез и data-driven подходе — напрямую применяется при проектировании надёжных автоматизаций.",
+    "section-languages":"Языки",
+    "lang-item-1":"🇺🇦 <b>Украинский</b> — Родной",
+    "lang-item-2":"🇷🇺 <b>Русский</b> — Родной",
+    "lang-item-3":"🇬🇧 <b>Английский</b> — B1",
+    "section-contact":"Контакт",
+    "contact-h2":"Давайте автоматизируем",
+    "contact-desc":"Расскажите о вашем процессе — я предложу кратчайший путь к рабочей автоматизации."
+  },
+  uk:{
+    "chip-available":"Відкритий до проектів",
+    "chip-location":"📍 Київ, Україна",
+    "hero-h1":'N8N Automation Expert<br><span class="accent">No-code архітектор workflows та AI-інтеграції</span>',
+    "hero-sub":"Перетворюю ручні операції на стабільні автоматизовані системи. Проектую, розгортаю та підтримую складні багатоетапні workflows в n8n з інтеграцією AI, CRM, API та інфраструктури.",
+    "btn-portfolio":"Дивитись портфоліо",
+    "btn-contact":"Написати мені",
+    "section-about":"Про мене",
+    "about-title":"Про мене",
+    "about-subtitle":"Підхід, фокус і що я приношу в проект",
+    "about-desc":"Я спеціалізуюся на n8n — інструменті, який дає повний контроль над автоматизацією: логіка, API, дані та AI в одному пайплайні. Працюю з реальними бізнес-задачами: звільняю команди від ручних операцій, з'єдную сервіси та будую системи, які працюють передбачувано і надійно. Кожен проект починається з розуміння процесу, а не лише технології.",
+    "section-stack":"Стек технологій",
+    "stack-h2":"Інструменти, з якими я працюю",
+    "stack-auto":"Ядро автоматизації",
+    "stack-ai":"AI та голос",
+    "stack-crm":"CRM та бази даних",
+    "stack-api":"API та інтеграції",
+    "stack-infra":"Інфраструктура",
+    "section-portfolio":"Портфоліо",
+    "portfolio-h2":"Вибрані кейси автоматизації",
+    "scout-subtitle":"Автономний дослідницький агент на OpenClaw + Kimi K2.6",
+    "scout-desc":"Побудований на <b>OpenClaw</b> — автономний AI-агент для досліджень, що працює 24/7 на VPS. Приймає текстові та голосові повідомлення в Telegram, самостійно планує дослідження, шукає в інтернеті, аналізує джерела та формує структуровані звіти на будь-яку тему.",
+    "scout-step6":"Структурований звіт",
+    "scout-noscreen":"Скриншота workflow немає — агент побудований поза n8n, на рівні коду з використанням фреймворку OpenClaw.",
+    "gaming-subtitle":"Автоматизована система пошуку казино",
+    "gaming-desc":"Багаторівневий workflow з паралельною обробкою десятків джерел. Скриншоти показують масштаб: паралельні гілки, HTTP-запити, Code-вузли, агрегація та дедуплікація.",
+    "gaming-step3":"Парсинг + дедуплікація",
+    "gaming-step4":"Автооновлюваний каталог",
+    "tiktok-desc":"Пайплайн, який бере TikTok-відео через Telegram, транскрибує мовлення, перекладає та відтворює відео з синхронізованим AI-аватаром іншою мовою.",
+    "tiktok-step3":"Переклад через GPT",
+    "tiktok-step5":"Локалізоване відео",
+    "leads-desc":"Багатоканальна воронка кваліфікації лідів: дедуплікація, AI-скоринг впевненості, маршрутизація по відділах, автоматична ескалація при низькій впевненості.",
+    "leads-step5":"Маршрутизований лід",
+    "legis-subtitle":"Моніторинг законопроектів AI (n8n)",
+    "legis-desc":"Автоматичний моніторинг законопроектів США: розклад → LegiScan API → фільтр → вилучення PDF → аналіз GPT → лог у Google Sheets з дедуплікацією.",
+    "legis-step4":"Дайджест у Google Sheets",
+    "corp-title":"Інтелектуальний AI-агент для корпоративних даних",
+    "corp-desc":"Корпоративний AI-агент з векторною базою знань. Вхідний чат → семантичний пошук у Supabase Vector Store → контекстна відповідь LLM. Окремий workflow синхронізує дані Notion у вектори.",
+    "corp-step1":"Повідомлення в чат",
+    "corp-step4":"Контекстна відповідь",
+    "section-expertise":"Експертиза",
+    "expertise-h2":"Ключові навички",
+    "skill-1":"<b>n8n</b> — проектування, розгортання та підтримка складних багатоетапних workflows",
+    "skill-2":"<b>AI Agents</b> — автономні агенти на OpenClaw, LLM-ланцюги, reasoning через OpenRouter",
+    "skill-3":"<b>Voice AI</b> — голосові пайплайни з Whisper (STT), ElevenLabs, HeyGen аватар",
+    "skill-4":"<b>CRM & Data</b> — інтеграція та синхронізація Airtable, Notion, Google Workspace, Supabase",
+    "skill-5":"<b>API & Webhooks</b> — надійна передача даних, HTTP-ланцюги, REST API, дедуплікація",
+    "skill-6":"<b>Telegram Bots</b> — боти як інтерфейси автоматизації: тригери, сповіщення, агенти",
+    "skill-7":"<b>Infrastructure</b> — VPS (Hetzner), Docker, Ubuntu — автоматизації працюють 24/7",
+    "section-bg":"Досвід та освіта",
+    "edu-title":"Освіта",
+    "edu-1":"<b>Marketing Automation School (MASC)</b> — Маркетингова автоматизація, 2025",
+    "edu-2":"<b>IT School GoIT</b> — FullStack-розробник, 2021–2022",
+    "exp-title":"Досвід роботи",
+    "exp-company":'<b>Медіабайер Facebook Ads — Infinity Traffic</b> <span style="color:var(--muted)">(Jun 2023 — Nov 2024)</span>',
+    "exp-1":"Запуск трафіку у вертикалі first-bill офферів, денний бюджет $200–300",
+    "exp-2":"Побудова та масштабування прибуткових воронок через аналітику та систематичне тестування",
+    "exp-3":"Чистий прибуток $15 070 за останні 6 місяців",
+    "exp-note":"Цей досвід дає сильну експертизу в аналітиці, тестуванні гіпотез та data-driven підході — безпосередньо застосовується при проектуванні надійних автоматизацій.",
+    "section-languages":"Мови",
+    "lang-item-1":"🇺🇦 <b>Українська</b> — Рідна",
+    "lang-item-2":"🇷🇺 <b>Російська</b> — Рідна",
+    "lang-item-3":"🇬🇧 <b>Англійська</b> — B1",
+    "section-contact":"Контакт",
+    "contact-h2":"Давайте автоматизуємо",
+    "contact-desc":"Розкажіть про ваш процес — я запропоную найкоротший шлях до робочої автоматизації."
+  }
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  const v = document.getElementById("hero-video");
+  const buttons = document.querySelectorAll("#lang button");
+
+  function detectLang(){
+    const nav = (navigator.language || "").toLowerCase();
+    if(nav.startsWith("uk")) return "uk";
+    if(nav.startsWith("ru")) return "ru";
+    return "en";
+  }
+
+  const saved = localStorage.getItem("site-lang") || detectLang();
+
+  function setLang(lang){
+    if(VIDEOS[lang]) v.src = VIDEOS[lang];
+    buttons.forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+    localStorage.setItem("site-lang", lang);
+    document.documentElement.lang = lang;
+    const dict = I18N[lang];
+    if(dict){
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.dataset.i18n;
+        if(dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+    }
+  }
+
+  buttons.forEach(b=>b.addEventListener("click", ()=>setLang(b.dataset.lang)));
+  setLang(saved);
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  document.querySelectorAll(".screens img").forEach(img=>{
+    img.addEventListener("click", ()=>{ lbImg.src = img.src; lb.classList.add("open"); });
+  });
+  lb.addEventListener("click", ()=>lb.classList.remove("open"));
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") lb.classList.remove("open"); });
+});
+</script>
+</body>
+</html>
