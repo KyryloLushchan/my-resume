@@ -486,14 +486,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const v = document.getElementById("hero-video");
   const buttons = document.querySelectorAll("#lang button");
 
-  function detectLang(){
-    const nav = (navigator.language || "").toLowerCase();
-    if(nav.startsWith("uk")) return "uk";
-    if(nav.startsWith("ru")) return "ru";
-    return "en";
-  }
-
-  const saved = localStorage.getItem("site-lang") || detectLang();
+  const saved = localStorage.getItem("site-lang") || "en";
 
   function setLang(lang){
     if(VIDEOS[lang]) v.src = VIDEOS[lang];
