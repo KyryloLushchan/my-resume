@@ -154,6 +154,32 @@ footer{padding:30px 24px 50px;color:var(--muted);text-align:center;font-size:13p
     </div>
 
     <div class="node case">
+      <div class="head"><div class="icon">🧑‍💼</div><div><div class="title">HR Candidate Feedback AI Agent</div><div class="subtitle" data-i18n="hr-subtitle">Auto-Analysis After Interview (Bluedot)</div></div></div>
+      <p class="desc" data-i18n="hr-desc">n8n workflow that automatically analyzes candidates after each interview recorded in Bluedot. When a meeting is marked done, it parses the transcript, scrapes the LinkedIn profile via Apify, runs a market research query via Tavily, and GPT-4 generates a structured feedback report — sent back to Bluedot and logged in Google Sheets.</p>
+      <div class="flow">
+        <span class="step" data-i18n="hr-step1">Bluedot: meeting done</span><span class="arrow">→</span>
+        <span class="step">Apify: LinkedIn</span><span class="arrow">→</span>
+        <span class="step">Tavily research</span><span class="arrow">→</span>
+        <span class="step">GPT-4</span><span class="arrow">→</span>
+        <span class="step" data-i18n="hr-step5">Bluedot + Sheets</span>
+      </div>
+      <div class="screens"><img src="screens/hr-candidate.jpg" alt="HR Candidate Feedback workflow" loading="lazy"></div>
+    </div>
+
+    <div class="node case">
+      <div class="head"><div class="icon">🚗</div><div><div class="title">Mobile.de Auto Publisher</div><div class="subtitle" data-i18n="mobile-subtitle">Telegram Bot with AI Photo Selection</div></div></div>
+      <p class="desc" data-i18n="mobile-desc">Semi-automated workflow for publishing car listings from mobile.de to a Telegram channel. A manager sends a listing URL — the workflow scrapes the page via ScrapingBee, GPT-4 Vision picks the 10 most relevant photos and writes the caption. The manager approves, edits price or rejects through inline buttons; approved posts go into a Google Sheets queue and Cron publishes them 3 times per day.</p>
+      <div class="flow">
+        <span class="step">Telegram URL</span><span class="arrow">→</span>
+        <span class="step">ScrapingBee</span><span class="arrow">→</span>
+        <span class="step" data-i18n="mobile-step3">GPT-4 Vision: 10 photos</span><span class="arrow">→</span>
+        <span class="step" data-i18n="mobile-step4">Approval buttons</span><span class="arrow">→</span>
+        <span class="step" data-i18n="mobile-step5">Cron publish 3×/day</span>
+      </div>
+      <div class="screens"><img src="screens/mobile-de.jpg" alt="Mobile.de Auto Publisher workflow" loading="lazy"></div>
+    </div>
+
+    <div class="node case">
       <div class="head"><div class="icon">🎬</div><div><div class="title">AI Pipeline: TikTok → Translated Avatar</div><div class="subtitle">n8n + HeyGen + ElevenLabs</div></div></div>
       <p class="desc" data-i18n="tiktok-desc">Pipeline that takes a TikTok video via Telegram, transcribes the speech, translates it and re-creates the video with a synchronised AI avatar in another language.</p>
       <div class="flow">
@@ -307,6 +333,15 @@ const I18N={
     "gaming-desc":"Multi-level workflow with parallel processing of dozens of sources. Screenshots show the scale: parallel branches, HTTP requests, Code nodes, aggregation and deduplication.",
     "gaming-step3":"Parsing + dedup",
     "gaming-step4":"Auto-updated catalogue",
+    "hr-subtitle":"Auto-Analysis After Interview (Bluedot)",
+    "hr-desc":"n8n workflow that automatically analyzes candidates after each interview recorded in Bluedot. When a meeting is marked done, it parses the transcript, scrapes the LinkedIn profile via Apify, runs a market research query via Tavily, and GPT-4 generates a structured feedback report — sent back to Bluedot and logged in Google Sheets.",
+    "hr-step1":"Bluedot: meeting done",
+    "hr-step5":"Bluedot + Sheets",
+    "mobile-subtitle":"Telegram Bot with AI Photo Selection",
+    "mobile-desc":"Semi-automated workflow for publishing car listings from mobile.de to a Telegram channel. A manager sends a listing URL — the workflow scrapes the page via ScrapingBee, GPT-4 Vision picks the 10 most relevant photos and writes the caption. The manager approves, edits price or rejects through inline buttons; approved posts go into a Google Sheets queue and Cron publishes them 3 times per day.",
+    "mobile-step3":"GPT-4 Vision: 10 photos",
+    "mobile-step4":"Approval buttons",
+    "mobile-step5":"Cron publish 3×/day",
     "tiktok-desc":"Pipeline that takes a TikTok video via Telegram, transcribes the speech, translates it and re-creates the video with a synchronised AI avatar in another language.",
     "tiktok-step3":"GPT translate",
     "tiktok-step5":"Localised video",
@@ -374,6 +409,15 @@ const I18N={
     "gaming-desc":"Многоуровневый workflow с параллельной обработкой десятков источников. Скриншоты показывают масштаб: параллельные ветки, HTTP-запросы, Code-узлы, агрегация и дедупликация.",
     "gaming-step3":"Парсинг + дедупликация",
     "gaming-step4":"Автообновляемый каталог",
+    "hr-subtitle":"Авто-анализ после интервью (Bluedot)",
+    "hr-desc":"n8n workflow, который автоматически анализирует кандидатов после каждого интервью в Bluedot. Когда встреча отмечается завершённой, парсится транскрипт, через Apify скрапится LinkedIn-профиль, через Tavily запускается рыночный research — и GPT-4 формирует структурированный feedback-отчёт. Отчёт отправляется обратно в Bluedot и логируется в Google Sheets.",
+    "hr-step1":"Bluedot: встреча завершена",
+    "hr-step5":"Bluedot + Sheets",
+    "mobile-subtitle":"Telegram-бот с AI-отбором фото",
+    "mobile-desc":"Полуавтоматический workflow для публикации объявлений с mobile.de в Telegram-канал. Менеджер отправляет ссылку — workflow скрапит страницу через ScrapingBee, GPT-4 Vision выбирает 10 самых релевантных фото и пишет caption. Менеджер аппрувит, правит цену или отклоняет через inline-кнопки; одобренные посты складываются в очередь Google Sheets и Cron публикует их 3 раза в день.",
+    "mobile-step3":"GPT-4 Vision: 10 фото",
+    "mobile-step4":"Кнопки аппрува",
+    "mobile-step5":"Cron — 3 раза в день",
     "tiktok-desc":"Пайплайн, который берёт TikTok-видео через Telegram, транскрибирует речь, переводит и пересоздаёт видео с синхронизированным AI-аватаром на другом языке.",
     "tiktok-step3":"Перевод через GPT",
     "tiktok-step5":"Локализованное видео",
@@ -441,6 +485,15 @@ const I18N={
     "gaming-desc":"Багаторівневий workflow з паралельною обробкою десятків джерел. Скриншоти показують масштаб: паралельні гілки, HTTP-запити, Code-вузли, агрегація та дедуплікація.",
     "gaming-step3":"Парсинг + дедуплікація",
     "gaming-step4":"Автооновлюваний каталог",
+    "hr-subtitle":"Авто-аналіз після інтерв'ю (Bluedot)",
+    "hr-desc":"n8n workflow, який автоматично аналізує кандидатів після кожного інтерв'ю в Bluedot. Коли зустріч позначена завершеною, парситься транскрипт, через Apify скрапиться LinkedIn-профіль, через Tavily запускається ринковий research — і GPT-4 формує структурований feedback-звіт. Звіт надсилається назад у Bluedot і логується в Google Sheets.",
+    "hr-step1":"Bluedot: зустріч завершена",
+    "hr-step5":"Bluedot + Sheets",
+    "mobile-subtitle":"Telegram-бот з AI-відбором фото",
+    "mobile-desc":"Напівавтоматичний workflow для публікації оголошень з mobile.de у Telegram-канал. Менеджер надсилає посилання — workflow скрапить сторінку через ScrapingBee, GPT-4 Vision обирає 10 найрелевантніших фото та пише caption. Менеджер апрувить, править ціну або відхиляє через inline-кнопки; схвалені пости складаються в чергу Google Sheets, і Cron публікує їх 3 рази на день.",
+    "mobile-step3":"GPT-4 Vision: 10 фото",
+    "mobile-step4":"Кнопки апруву",
+    "mobile-step5":"Cron — 3 рази на день",
     "tiktok-desc":"Пайплайн, який бере TikTok-відео через Telegram, транскрибує мовлення, перекладає та відтворює відео з синхронізованим AI-аватаром іншою мовою.",
     "tiktok-step3":"Переклад через GPT",
     "tiktok-step5":"Локалізоване відео",
